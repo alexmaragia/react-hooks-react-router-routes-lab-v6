@@ -1,12 +1,20 @@
-span {
-    margin: 0px 2px;
+/* src/index.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-article {
-    border: solid 1px;
-    border-radius: 5px;
-    margin: 5px;
-    max-width: 350px;
-    box-sizing: border-box;
-    padding: 5px;
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 0.5rem 0;
 }

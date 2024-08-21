@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import NavBar from '../components/NavBar';
 
 function Movie() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/movies/${id}`)
-    .then((response) => response.json())
-    .then((data) => setMovie(data))
-    .catch((error) =>console.error("Error fetching movie data", error));
+    const movieData = {
+      1: { title: "Doctor Strange", runtime: 115, genres: ["Action", "Adventure", "Fantasy"] },
+      2: { title: "The Imitation Game", runtime: 113, genres: ["Biography", "Drama", "Thriller"] },
+      // Add more movie data here
+    };
+    setMovie(movieData[id]);
   }, [id]);
 
-  if (!movie) {
-    return <p>Loading...</p>;
-  }
+  if (!movie) return <p>Loading...</p>;
+
   return (
     <>
       <header>
@@ -23,15 +24,15 @@ function Movie() {
         <h1>{movie.title}</h1>
       </header>
       <main>
-        <p>Time: {movie.time}</p>
+        <p>Runtime: {movie.runtime} minutes</p>
         <div>
-          {movie.genres.map((genre, index) => (
-            <span key={index} className="genre"></span>
+          {movie.genres.map(genre => (
+            <span key={genre}>{genre}</span>
           ))}
-          </div>
+        </div>
       </main>
     </>
   );
-};
+}
 
 export default Movie;

@@ -1,28 +1,38 @@
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
+import NavBar from '../components/NavBar';
 
 function Directors() {
   const [directors, setDirectors] = useState([]);
 
-  useEffect(()=> {
-    fetch("http://localhost:4000/directors")
-    .then((response) => response.json())
-    .then((data) => setDirectors(data))
-    .catch((error) =>console.error("Error fetching director data:", error));
+  useEffect(() => {
+    setDirectors([
+      {
+        name: "Scott Derrickson",
+        movies: ["Doctor Strange", "Sinister", "The Exorcism of Emily Rose"],
+      },
+      {
+        name: "Mike Mitchell",
+        movies: ["Trolls", "Alvin and the Chipmunks: Chipwrecked", "Sky High"],
+      },
+      {
+        name: "Edward Zwick",
+        movies: ["Jack Reacher: Never Go Back", "Blood Diamond", "The Siege"],
+      },
+    ]);
   }, []);
 
   return (
     <>
       <header>
         <NavBar />
+        <h1>Directors Page</h1>
       </header>
       <main>
-        <h1>Directors Page</h1>
-        {directors.map((director) => (
-          <article key={director.id}>
+        {directors.map(director => (
+          <article key={director.name}>
             <h2>{director.name}</h2>
             <ul>
-              {director.movies.map((movie) => (
+              {director.movies.map(movie => (
                 <li key={movie}>{movie}</li>
               ))}
             </ul>
@@ -31,6 +41,6 @@ function Directors() {
       </main>
     </>
   );
-};
+}
 
 export default Directors;

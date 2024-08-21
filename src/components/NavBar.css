@@ -1,17 +1,17 @@
-/* src/components/NavBar.css */
-.nav-bar {
-    background-color: #333;
-    padding: 1rem;
-    text-align: center;
-}
-
-.nav-bar a {
-    color: white;
-    margin: 0 1rem;
+.navbar > a {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 70px;
+    padding: 5px;
+    margin: 0 6px 6px;
+    background: lightblue;
     text-decoration: none;
+    text-align: center;
+    font-size: min(10vw, 15px);
+    color: black;
 }
 
-.nav-bar a.active {
-    font-weight: bold;
-    border-bottom: 2px solid #fff;
+a.active {
+    background: black;
+    color: white;
 }
